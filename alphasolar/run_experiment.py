@@ -66,6 +66,7 @@ def main():
 
     config["env"] = AlphaSolarEnvRllib
     config["env_config"] = env_config
+    config["num_workers"] = 7
 
     pprint(config)
 

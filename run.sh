@@ -1,0 +1,1 @@
+python alphasolar/run_experiment.py --lat 35.198027501078386 --lon 128.07860592237947 --name Jinju
