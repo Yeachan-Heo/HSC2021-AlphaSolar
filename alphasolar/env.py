@@ -17,14 +17,14 @@ class AlphaSolarEnv(gym.Env):
                 panel,
                 date_time,
                 name_ext,
-                timestep=3000,
+                timestep=5,
                 panel_step=.1,
                 reflective_index=0.65,
                 latitude_deg=40.7,
                 longitude_deg=142.17,
                 img_dims=32,
                 mode_dict = {'dual_axis':True, 'image_mode':True, 'cloud_mode':True},
-                n_steps=1000,
+                n_steps=12*24,
                 ):
 
         if name_ext == "usa_avg":
@@ -510,11 +510,14 @@ def _multivariate_gaussian(x, y, mu_vec, cov_matrix):
     Returns:
         (float): evaluates the PDF of the multivariate at the point x,y.
     '''
-    numerator = np.exp(-.5 *np.transpose(np.array([x,y]) - mu_vec) * np.linalg.inv(cov_matrix) * (np.array([x,y]) - mu_vec))
+    numerator = np.exp(-.5*np.transpose(np.array([x,y]) - mu_vec) * np.linalg.inv(cov_matrix) * (np.array([x,y]) - mu_vec))
     denominator = np.sqrt(np.linalg.det(2*m.pi*cov_matrix))
 
     res = numerator / denominator
     return res[0][0] + res[1][1]
 
 
-
+class AlphaSolarEnvRllib(AlphaSolarEnv):
+    def __init__(self, env_config):
+        print(env_config)
+        super().__init__(**env_config)
