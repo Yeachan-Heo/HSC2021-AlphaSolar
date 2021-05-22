@@ -11,8 +11,8 @@ from pprint import pprint
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--lat", type=int)
-    parser.add_argument("--lon", type=int)
+    parser.add_argument("--lat", type=float)
+    parser.add_argument("--lon", type=float)
     parser.add_argument("--dual_axis", default=True, type=bool)
     parser.add_argument("--cloud", default=True, type=bool)
     parser.add_argument("--name", type=str)
