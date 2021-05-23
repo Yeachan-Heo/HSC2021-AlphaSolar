@@ -285,7 +285,7 @@ class AlphaSolarEnv(gym.Env):
 
         power = self.panel.get_power(optimal_reward)
         energy = power * self.timestep * 60 # Joules
-        optimal_reward = energy / 1000000.0 # Convert Watts to Megawatts
+        optimal_reward = energy / 1000.0 # Convert Watts to Megawatts
 
         return optimal_reward
 
@@ -494,7 +494,8 @@ class AlphaSolarEnv(gym.Env):
         return np.array(self.objects["sun"][0]["image"]).flatten()
     
     def step(self, action):
-        action = self.ACTIONS[action]
+        if not isinstance(action, str):
+            action = self.ACTIONS[action]
         reward = self._reward_func(self.state, action)
         self.state = self._transition_func(self.state, action)
         return np.array(self.objects["sun"][0]["image"]).flatten(), reward, self._get_terminal(), {}

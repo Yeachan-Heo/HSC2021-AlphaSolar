@@ -16,8 +16,8 @@ def parse_args():
     parser.add_argument("--dual_axis", default=True, type=bool)
     parser.add_argument("--cloud", default=True, type=bool)
     parser.add_argument("--name", type=str)
-    parser.add_argument("--panel_step", default=0.1)
-    parser.add_argument("--timestep", default=5)
+    parser.add_argument("--panel_step", default=20)
+    parser.add_argument("--timestep", default=20)
     args = parser.parse_args()
     return args
 
@@ -71,13 +71,16 @@ def main():
     pprint(config)
 
     local_dir = (f"{timezone_str}_{args.name}_{date_time}_{('dual' if args.dual_axis else 'single')}_{'no' if args.cloud else 'yes'}cloud_p{args.panel_step}")
-    local_dir = os.path.join("./", local_dir)
+    local_dir = os.path.join("./ray_results", local_dir)
 
     tune.run(
         PPOTrainer,
         local_dir=local_dir,
         config=config,
-        stop=stopper.MaximumIterationStopper(100000)
+        stop=stopper.MaximumIterationStopper(200),
+        checkpoint_at_end=True, 
+        checkpoint_freq=100,
     )
 
-main()
+if __name__ == "__main__":
+    main()
