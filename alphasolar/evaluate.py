@@ -1,4 +1,5 @@
 from alphasolar.run_experiment import *
+import tqdm
 import ray
 
 
@@ -9,11 +10,13 @@ def run_with_policy(env_cls, env_config, policy):
     r_lst = [0]
     s_lst = [s]
     t_lst = [env.time]
-    while not d:
+    for i in tqdm.tqdm(range(env_config["n_steps"])):
         s, r, d, _ = env.step(policy(s))
         r_lst.append(r)
         s_lst.append(s)
         t_lst.append(env.time)
+        if d:
+            break
     
     return np.array(r_lst), np.array(s_lst), np.array(t_lst)
 
@@ -26,7 +29,7 @@ def save_arrays(r_lst, s_lst, t_lst, save_dir):
     np.save(os.path.join(save_dir, "s_lst.npy"), s_lst)
     np.save(os.path.join(save_dir, "t_lst.npy"), t_lst)
 
-
+@ray.remote
 def run_with_policy_and_save(env_cls, env_config, policy, save_dir):
     s_lst, r_lst, t_lst = run_with_policy(env_cls, env_config, policy)
     save_arrays(s_lst, r_lst, t_lst, save_dir)
@@ -34,6 +37,7 @@ def run_with_policy_and_save(env_cls, env_config, policy, save_dir):
 
 def evaluate():
     args = parse_args()
+    args.da = bool(args.da)
     panel = Panel(x_dim=1,
                   y_dim=1,
                   assembly_mass=15, #kg
@@ -51,7 +55,7 @@ def evaluate():
 
     timezone_str = tzwhere.tzNameAt(args.lat, args.lon) # Seville coordinates
 
-    date_time = datetime.datetime(2020, 6, 5, 3)
+    date_time = datetime.datetime(2004, 8, 10, 0)
     localtz = timezone(timezone_str)
     
     date_time = localtz.localize(date_time)
@@ -67,8 +71,8 @@ def evaluate():
         "panel_step" : args.panel_step,
         "latitude_deg" : args.lat,
         "longitude_deg" : args.lon,
-        "n_steps" : n_steps,
-        "mode_dict" : {"dual_axis" : args.dual_axis, "image_mode" : True, "cloud_mode" : args.cloud}
+        "n_steps" : n_steps * 365 * 5,
+        "mode_dict" : {"dual_axis" : args.da, "image_mode" : True, "cloud_mode" : args.cloud}
     }
 
     config = DEFAULT_CONFIG.copy()
@@ -78,28 +82,31 @@ def evaluate():
 
     pprint(config)
 
-    local_dir = (f"{timezone_str}_{args.name}_{date_time}_{('dual' if args.dual_axis else 'single')}_{'no' if args.cloud else 'yes'}cloud_p{args.panel_step}")
+    local_dir = (f"{timezone_str}_{args.name}_{date_time}_{('dual' if args.da else 'single')}_{'no' if args.cloud else 'yes'}cloud_p{args.panel_step}")
     evaluation_dir = os.path.join("./evaluation_results", local_dir)
-    local_dir = os.path.join("./ray_results", local_dir)
+    # local_dir = os.path.join("./ray_results", local_dir)
 
-    restore_dir = os.path.join(local_dir, sorted(os.listdir(local_dir))[-1])
-    restore_dir = os.path.join(restore_dir, sorted(list(filter(lambda x: "PPO" in x, os.listdir(restore_dir))))[-1])
-    restore_dir = os.path.join(restore_dir, sorted(list(filter(lambda x: "checkpoint" in x, os.listdir(restore_dir))))[-1])
-    restore_dir = os.path.join(restore_dir, sorted(list(filter(lambda x: not ("." in x), os.listdir(restore_dir))))[-1])
+    # restore_dir = os.path.join(local_dir, sorted(os.listdir(local_dir))[-1])
+    # restore_dir = os.path.join(restore_dir, sorted(list(filter(lambda x: "PPO" in x, os.listdir(restore_dir))))[-1])
+    # restore_dir = os.path.join(restore_dir, sorted(list(filter(lambda x: "checkpoint" in x, os.listdir(restore_dir))))[-1])
+    # restore_dir = os.path.join(restore_dir, sorted(list(filter(lambda x: not ("." in x), os.listdir(restore_dir))))[-1])
 
-    print(restore_dir)
+    # print(restore_dir)
     
     ray.init()
 
     agent = PPOTrainer(config)
-    agent.restore(restore_dir)
+    agent.restore("/root/Hanhwa-AlphaSolar/ray_results/AsiaSeoul_Jinju_2020-06-05 03:00:00+09:00_dual_nocloud_p10/PPO_2021-05-23_18-18-03/PPO_AlphaSolarEnvRllib_c6a4c_00000_0_2021-05-23_18-18-03/checkpoint_002200/checkpoint-2200")
 
     agent_policy = agent.compute_action
     optimal_policy = lambda s: "optimal"
-    static_policy = lambda s: 2 if args.dual_axis else 1
+    static_policy = lambda s: 2 if args.da else 1
 
-    run_with_policy_and_save(AlphaSolarEnvRllib, env_config, agent_policy, os.path.join(evaluation_dir, "agent"))
-    run_with_policy_and_save(AlphaSolarEnvRllib, env_config, optimal_policy, os.path.join(evaluation_dir, "optimal"))
-    run_with_policy_and_save(AlphaSolarEnvRllib, env_config, static_policy, os.path.join(evaluation_dir, "static"))
-
+    p1 = run_with_policy_and_save.remote(AlphaSolarEnvRllib, env_config, agent_policy, os.path.join(evaluation_dir, "agent"))
+    p2 = run_with_policy_and_save.remote(AlphaSolarEnvRllib, env_config, optimal_policy, os.path.join(evaluation_dir, "optimal"))
+    p3 = run_with_policy_and_save.remote(AlphaSolarEnvRllib, env_config, static_policy, os.path.join(evaluation_dir, "static"))
+    ray.get(p1)
+    ray.get(p2)
+    ray.get(p3)
+    
 evaluate()

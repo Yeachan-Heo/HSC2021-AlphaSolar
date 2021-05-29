@@ -1,3 +1,4 @@
+from enum import IntEnum
 import os
 import argparse
 
@@ -13,17 +14,18 @@ def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument("--lat", type=float)
     parser.add_argument("--lon", type=float)
-    parser.add_argument("--dual_axis", default=True, type=bool)
+    parser.add_argument("--da", default=1, type=int)
     parser.add_argument("--cloud", default=True, type=bool)
     parser.add_argument("--name", type=str)
-    parser.add_argument("--panel_step", default=20)
-    parser.add_argument("--timestep", default=20)
+    parser.add_argument("--panel_step", type=int, default=20)
+    parser.add_argument("--timestep", type=int, default=20)
+
     args = parser.parse_args()
     return args
 
 def main():
     args = parse_args()
-    
+    args.da = bool(args.da)
     
     panel = Panel(x_dim=1,
                   y_dim=1,
@@ -59,7 +61,7 @@ def main():
         "latitude_deg" : args.lat,
         "longitude_deg" : args.lon,
         "n_steps" : n_steps,
-        "mode_dict" : {"dual_axis" : args.dual_axis, "image_mode" : True, "cloud_mode" : args.cloud}
+        "mode_dict" : {"dual_axis" : args.da, "image_mode" : True, "cloud_mode" : args.cloud}
     }
 
     config = DEFAULT_CONFIG.copy()
@@ -68,18 +70,17 @@ def main():
     config["env_config"] = env_config
     config["num_workers"] = 7
 
-    pprint(config)
-
-    local_dir = (f"{timezone_str}_{args.name}_{date_time}_{('dual' if args.dual_axis else 'single')}_{'no' if args.cloud else 'yes'}cloud_p{args.panel_step}")
+    local_dir = (f"{timezone_str}_{args.name}_{date_time}_{('dual' if args.da else 'single')}_{'no' if args.cloud else 'yes'}cloud_p{args.panel_step}")
     local_dir = os.path.join("./ray_results", local_dir)
 
     tune.run(
         PPOTrainer,
         local_dir=local_dir,
         config=config,
-        stop=stopper.MaximumIterationStopper(200),
+        stop=stopper.MaximumIterationStopper(2000),
         checkpoint_at_end=True, 
         checkpoint_freq=100,
+        restore="/root/Hanhwa-AlphaSolar/ray_results/AsiaSeoul_Jinju_2020-06-05 03:00:00+09:00_dual_nocloud_p10/PPO_2021-05-23_15-24-06/PPO_AlphaSolarEnvRllib_79fc3_00000_0_2021-05-23_15-24-06/checkpoint_000200/checkpoint-200"
     )
 
 if __name__ == "__main__":

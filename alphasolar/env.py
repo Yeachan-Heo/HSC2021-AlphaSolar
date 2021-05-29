@@ -8,6 +8,7 @@ import alphasolar.solar_helpers as sh
 import matplotlib.pyplot as plt
 from alphasolar.structures import *
 
+
 class AlphaSolarEnv(gym.Env):
     ACTIONS = ["panel_forward_ns", "panel_back_ns", "do_nothing", "panel_forward_ew", "panel_back_ew"]
     ATTRIBUTES = ["angle_AZ", "angle_ALT", "angle_ns", "angle_ew"]
@@ -44,7 +45,7 @@ class AlphaSolarEnv(gym.Env):
         # Mode information
         if not(mode_dict['dual_axis']):
             # If we are in 1-axis tracking mode, change actions accordingly.
-            self.ACTIONS = self.get_single_axis_actions
+            self.ACTIONS = self.get_single_axis_actions()
             self.dual_axis = False
         else:
             self.dual_axis = True
@@ -489,8 +490,8 @@ class AlphaSolarEnv(gym.Env):
             Resets the OOMDP back to the initial configuration.
         '''
         self.current_step = 0
-        self.time = self.init_time
         self.state = self.init_state
+        
         return np.array(self.objects["sun"][0]["image"]).flatten()
     
     def step(self, action):
@@ -520,5 +521,4 @@ def _multivariate_gaussian(x, y, mu_vec, cov_matrix):
 
 class AlphaSolarEnvRllib(AlphaSolarEnv):
     def __init__(self, env_config):
-        print(env_config)
         super().__init__(**env_config)

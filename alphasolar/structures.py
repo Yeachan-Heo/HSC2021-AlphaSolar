@@ -1,4 +1,6 @@
 import numpy as np
+from alphasolar.SolarTrackerClass import SolarTracker
+import alphasolar.tracking_baselines as tb
 
 g = 9.8 #meters per second
 
