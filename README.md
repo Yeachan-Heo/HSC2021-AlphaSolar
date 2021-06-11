@@ -2,7 +2,7 @@
 한화사이언스챌린지 2021 OUTLIERs 팀 프로젝트.   
 
 # Contributions
-태양광 발전기의 효율을 Deep Reinforcment Learning을 이용하여 유의미한 수준의 개선을 이뤄냄
+태양광 발전기의 효율을 Deep Reinforcement Learning을 이용하여 유의미한 수준의 개선을 이뤄냄
 계획서/발표 자료는 pdf 파일, 시각화는 visualization.ipynb   
 
 # Features
