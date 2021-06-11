@@ -16,3 +16,7 @@
 
 # Reference
 https://github.com/david-abel/solar_panels_rl
+
+# 여담
+발표하고 나서 그래서 이거 딥러닝 쓴거 맞나요? 를 질문으로 들었다.  
+전달력이 부족했던거 같다....ㅋㅋㅋ
