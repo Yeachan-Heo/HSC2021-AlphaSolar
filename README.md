@@ -1,4 +1,4 @@
-# Hanhwa-Alphasolar
+#  HSC2021-Alphasolar
 한화사이언스챌린지 2021 OUTLIERs 팀 프로젝트.   
 
 # Contributions
