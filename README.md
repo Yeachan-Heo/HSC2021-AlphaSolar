@@ -13,7 +13,3 @@
 
 # Comments.  
 본선에 가지는 못했지만 깃허브로라도 결과를 발표해 봅니다.  
-
-
-
-![Uploading image.png…]()
