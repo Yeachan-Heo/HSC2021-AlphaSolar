@@ -81,7 +81,7 @@ def evaluate():
     config["env_config"] = env_config
 
     pprint(config)
-
+#
     local_dir = (f"{timezone_str}_{args.name}_{date_time}_{('dual' if args.da else 'single')}_{'no' if args.cloud else 'yes'}cloud_p{args.panel_step}")
     evaluation_dir = os.path.join("./evaluation_results", local_dir)
     # local_dir = os.path.join("./ray_results", local_dir)

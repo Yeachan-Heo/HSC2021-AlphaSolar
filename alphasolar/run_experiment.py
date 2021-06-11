@@ -63,7 +63,7 @@ def main():
         "n_steps" : n_steps,
         "mode_dict" : {"dual_axis" : args.da, "image_mode" : True, "cloud_mode" : args.cloud}
     }
-
+#
     config = DEFAULT_CONFIG.copy()
 
     config["env"] = AlphaSolarEnvRllib

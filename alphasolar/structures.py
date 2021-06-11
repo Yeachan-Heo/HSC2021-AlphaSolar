@@ -89,7 +89,7 @@ class Panel():
         f_actuator = torque_g/np.sin(total_offset)
 
         return f_actuator
-
+#
     def __get_actuator_length__(self, axis, current_angle):
         '''
         Computes the current length of the actuator.

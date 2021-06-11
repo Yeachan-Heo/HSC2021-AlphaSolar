@@ -8,7 +8,7 @@ import numpy as np
 from pysolar import solar, radiation #capitalize to get it to work?
 
 CLOUD_DIFFUS_FACTOR = 1.0 #0.85 # 10% of light is blocked
-
+#
 def _write_datum_to_file(mdp_name, agent, datum, datum_name):
     out_file = open(os.path.join("..", "results", mdp_name, str(agent)) + "-" + datum_name + ".csv", "a+")
     out_file.write(str(datum) + ",")
