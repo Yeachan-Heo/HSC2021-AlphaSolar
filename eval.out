@@ -1,237 +1,0 @@
-/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/autoscaler/_private/cli_logger.py:61: FutureWarning: Not all Ray CLI dependencies were found. In Ray 1.4+, the Ray CLI, autoscaler, and dashboard will only be usable via `pip install 'ray[default]'`. Please update your install command.
-  "update your install command.", FutureWarning)
-WARNING:tensorflow:From /root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
-Instructions for updating:
-non-resource variables are not supported in the long term
-/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/numpy/core/_asarray.py:83: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
-  return array(a, dtype, copy=False, order=order)
-2021-05-25 16:11:42,654	INFO services.py:1269 -- View the Ray dashboard at [1m[32mhttp://127.0.0.1:8265[39m[22m
-2021-05-25 16:11:42,658	WARNING services.py:1726 -- WARNING: The object store is using /tmp instead of /dev/shm because /dev/shm has only 67108864 bytes available. This will harm performance! You may be able to free up space by deleting files in /dev/shm. If you are inside a Docker container, you can increase /dev/shm size by passing '--shm-size=10.24gb' to 'docker run' (or add it to the run_options list in a Ray cluster config). Make sure to set this to more than 30% of available RAM.
-2021-05-25 16:11:43,199	INFO trainer.py:669 -- Tip: set framework=tfe or the --eager flag to enable TensorFlow eager execution
-2021-05-25 16:11:43,199	INFO trainer.py:696 -- Current log_level is WARN. For more information, set 'log_level': 'INFO' / 'DEBUG' or use the -v and -vv flags.
-[2m[36m(pid=69441)[0m WARNING:tensorflow:From /root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
-[2m[36m(pid=69441)[0m Instructions for updating:
-[2m[36m(pid=69441)[0m non-resource variables are not supported in the long term
-[2m[36m(pid=69446)[0m WARNING:tensorflow:From /root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
-[2m[36m(pid=69446)[0m Instructions for updating:
-[2m[36m(pid=69446)[0m non-resource variables are not supported in the long term
-2021-05-25 16:11:46,101	WARNING util.py:53 -- Install gputil for GPU system monitoring.
-2021-05-25 16:11:46,204	INFO trainable.py:378 -- Restored on 172.17.0.9 from checkpoint: /root/Hanhwa-AlphaSolar/ray_results/AsiaSeoul_Jinju_2020-06-05 03:00:00+09:00_dual_nocloud_p10/PPO_2021-05-23_18-18-03/PPO_AlphaSolarEnvRllib_c6a4c_00000_0_2021-05-23_18-18-03/checkpoint_002200/checkpoint-2200
-2021-05-25 16:11:46,204	INFO trainable.py:385 -- Current state after restoring: {'_iteration': 2200, '_timesteps_total': None, '_time_total': 115550.16817855835, '_episodes_total': 128324}
-[2m[36m(pid=69447)[0m   0%|          | 0/1314000 [00:00<?, ?it/s]
-[2m[36m(pid=69443)[0m   0%|          | 0/1314000 [00:00<?, ?it/s]
-[2m[36m(pid=69447)[0m   0%|          | 2/1314000 [00:00<25:27:13, 14.34it/s]
-[2m[36m(pid=69443)[0m   0%|          | 4/1314000 [00:00<10:15:44, 35.57it/s]
-[2m[36m(pid=69443)[0m   0%|          | 8/1314000 [00:00<10:15:06, 35.60it/s]
-[2m[36m(pid=69447)[0m   0%|          | 4/1314000 [00:00<25:29:15, 14.32it/s]
-[2m[36m(pid=69443)[0m   0%|          | 12/1314000 [00:00<10:13:07, 35.72it/s]
-[2m[36m(pid=69447)[0m   0%|          | 6/1314000 [00:00<25:43:16, 14.19it/s]
-[2m[36m(pid=69443)[0m   0%|          | 16/1314000 [00:00<10:14:03, 35.66it/s]
-[2m[36m(pid=69447)[0m   0%|          | 8/1314000 [00:00<25:35:04, 14.27it/s]
-[2m[36m(pid=69443)[0m   0%|          | 20/1314000 [00:00<10:13:53, 35.67it/s]
-[2m[36m(pid=69447)[0m   0%|          | 10/1314000 [00:00<25:32:19, 14.29it/s]
-[2m[36m(pid=69443)[0m   0%|          | 24/1314000 [00:00<10:13:03, 35.72it/s]
-[2m[36m(pid=69443)[0m   0%|          | 28/1314000 [00:00<10:12:07, 35.78it/s]
-[2m[36m(pid=69447)[0m   0%|          | 12/1314000 [00:00<25:29:45, 14.32it/s]
-[2m[36m(pid=69443)[0m   0%|          | 32/1314000 [00:00<10:12:16, 35.77it/s]
-[2m[36m(pid=69444)[0m WARNING:tensorflow:From /root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
-[2m[36m(pid=69444)[0m Instructions for updating:
-[2m[36m(pid=69444)[0m non-resource variables are not supported in the long term
-[2m[36m(pid=69447)[0m   0%|          | 14/1314000 [00:00<25:33:53, 14.28it/s]
-[2m[36m(pid=69443)[0m   0%|          | 36/1314000 [00:01<10:11:47, 35.80it/s]
-[2m[36m(pid=69447)[0m   0%|          | 16/1314000 [00:01<25:34:26, 14.27it/s]
-[2m[36m(pid=69443)[0m   0%|          | 40/1314000 [00:01<10:12:42, 35.74it/s]
-{'_fake_gpus': False,
- 'batch_mode': 'truncate_episodes',
- 'callbacks': <class 'ray.rllib.agents.callbacks.DefaultCallbacks'>,
- 'clip_actions': True,
- 'clip_param': 0.3,
- 'clip_rewards': None,
- 'collect_metrics_timeout': 180,
- 'compress_observations': False,
- 'create_env_on_driver': False,
- 'custom_eval_function': None,
- 'custom_resources_per_worker': {},
- 'eager_tracing': False,
- 'entropy_coeff': 0.0,
- 'entropy_coeff_schedule': None,
- 'env': <class 'alphasolar.env.AlphaSolarEnvRllib'>,
- 'env_config': {'date_time': datetime.datetime(2000, 1, 1, 0, 0, tzinfo=<DstTzInfo 'Asia/Seoul' KST+9:00:00 STD>),
-                'latitude_deg': 35.198027501078386,
-                'longitude_deg': 128.07860592237947,
-                'mode_dict': {'cloud_mode': True,
-                              'dual_axis': True,
-                              'image_mode': True},
-                'n_steps': 1314000,
-                'name_ext': 'AsiaSeoul',
-                'panel': <alphasolar.structures.Panel object at 0x7fb9168fa550>,
-                'panel_step': 10,
-                'timestep': 20},
- 'evaluation_config': {},
- 'evaluation_interval': None,
- 'evaluation_num_episodes': 10,
- 'evaluation_num_workers': 0,
- 'exploration_config': {'type': 'StochasticSampling'},
- 'explore': True,
- 'extra_python_environs_for_driver': {},
- 'extra_python_environs_for_worker': {},
- 'fake_sampler': False,
- 'framework': 'tf',
- 'gamma': 0.99,
- 'grad_clip': None,
- 'horizon': None,
- 'ignore_worker_failures': False,
- 'in_evaluation': False,
- 'input': 'sampler',
- 'input_evaluation': ['is', 'wis'],
- 'kl_coeff': 0.2,
- 'kl_target': 0.01,
- 'lambda': 1.0,
- 'local_tf_session_args': {'inter_op_parallelism_threads': 8,
-                           'intra_op_parallelism_threads': 8},
- 'log_level': 'WARN',
- 'log_sys_usage': True,
- 'logger_config': None,
- 'lr': 5e-05,
- 'lr_schedule': None,
- 'metrics_smoothing_episodes': 100,
- 'min_iter_time_s': 0,
- 'model': {'_time_major': False,
-           'attention_dim': 64,
-           'attention_head_dim': 32,
-           'attention_init_gru_gate_bias': 2.0,
-           'attention_memory_inference': 50,
-           'attention_memory_training': 50,
-           'attention_num_heads': 1,
-           'attention_num_transformer_units': 1,
-           'attention_position_wise_mlp_dim': 32,
-           'attention_use_n_prev_actions': 0,
-           'attention_use_n_prev_rewards': 0,
-           'conv_activation': 'relu',
-           'conv_filters': None,
-           'custom_action_dist': None,
-           'custom_model': None,
-           'custom_model_config': {},
-           'custom_preprocessor': None,
-           'dim': 84,
-           'fcnet_activation': 'tanh',
-           'fcnet_hiddens': [256, 256],
-           'framestack': True,
-           'free_log_std': False,
-           'grayscale': False,
-           'lstm_cell_size': 256,
-           'lstm_use_prev_action': False,
-           'lstm_use_prev_action_reward': -1,
-           'lstm_use_prev_reward': False,
-           'max_seq_len': 20,
-           'no_final_linear': False,
-           'num_framestacks': 'auto',
-           'post_fcnet_activation': 'relu',
-           'post_fcnet_hiddens': [],
-           'use_attention': False,
-           'use_lstm': False,
-           'vf_share_layers': False,
-           'zero_mean': True},
- 'monitor': -1,
- 'multiagent': {'count_steps_by': 'env_steps',
-                'observation_fn': None,
-                'policies': {},
-                'policies_to_train': None,
-                'policy_mapping_fn': None,
-                'replay_mode': 'independent'},
- 'no_done_at_end': False,
- 'normalize_actions': False,
- 'num_cpus_for_driver': 1,
- 'num_cpus_per_worker': 1,
- 'num_envs_per_worker': 1,
- 'num_gpus': 0,
- 'num_gpus_per_worker': 0,
- 'num_sgd_iter': 30,
- 'num_workers': 2,
- 'observation_filter': 'NoFilter',
- 'optimizer': {},
- 'output': None,
- 'output_compress_columns': ['obs', 'new_obs'],
- 'output_max_file_size': 67108864,
- 'placement_strategy': 'PACK',
- 'postprocess_inputs': False,
- 'preprocessor_pref': 'deepmind',
- 'record_env': False,
- 'remote_env_batch_wait_ms': 0,
- 'remote_worker_envs': False,
- 'render_env': False,
- 'rollout_fragment_length': 200,
- 'sample_async': False,
- 'sample_collector': <class 'ray.rllib.evaluation.collectors.simple_list_collector.SimpleListCollector'>,
- 'seed': None,
- 'sgd_minibatch_size': 128,
- 'shuffle_buffer_size': 0,
- 'shuffle_sequences': True,
- 'simple_optimizer': -1,
- 'soft_horizon': False,
- 'synchronize_filters': True,
- 'tf_session_args': {'allow_soft_placement': True,
-                     'device_count': {'CPU': 1},
-                     'gpu_options': {'allow_growth': True},
-                     'inter_op_parallelism_threads': 2,
-                     'intra_op_parallelism_threads': 2,
-                     'log_device_placement': False},
- 'timesteps_per_iteration': 0,
- 'train_batch_size': 4000,
- 'use_critic': True,
- 'use_gae': True,
- 'vf_clip_param': 10.0,
- 'vf_loss_coeff': 1.0,
- 'vf_share_layers': -1}
-Traceback (most recent call last):
-  File "alphasolar/evaluate.py", line 112, in <module>
-    evaluate()
-  File "alphasolar/evaluate.py", line 108, in evaluate
-    ray.get(p1)
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/_private/client_mode_hook.py", line 47, in wrapper
-    return func(*args, **kwargs)
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/worker.py", line 1481, in get
-    raise value.as_instanceof_cause()
-ray.exceptions.RayTaskError: [36mray::run_with_policy_and_save()[39m (pid=69444, ip=172.17.0.9)
-  File "python/ray/_raylet.pyx", line 458, in ray._raylet.execute_task
-  File "python/ray/_raylet.pyx", line 479, in ray._raylet.execute_task
-  File "python/ray/_raylet.pyx", line 349, in ray._raylet.raise_if_dependency_failed
-ray.exceptions.RaySystemError: System error: 'PPO' object has no attribute 'workers'
-traceback: Traceback (most recent call last):
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 246, in deserialize_objects
-    obj = self._deserialize_object(data, metadata, object_ref)
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 188, in _deserialize_object
-    return self._deserialize_msgpack_data(data, metadata_fields)
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 166, in _deserialize_msgpack_data
-    python_objects = self._deserialize_pickle5_data(pickle5_data)
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 156, in _deserialize_pickle5_data
-    obj = pickle.loads(in_band)
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 191, in __setstate__
-    Trainer.__setstate__(self, state)
-  File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 1320, in __setstate__
-    self.workers.local_worker().restore(state["worker"])
-AttributeError: 'PPO' object has no attribute 'workers'
-[2m[36m(pid=69444)[0m 2021-05-25 16:11:47,696	ERROR serialization.py:248 -- 'PPO' object has no attribute 'workers'
-[2m[36m(pid=69444)[0m Traceback (most recent call last):
-[2m[36m(pid=69444)[0m   File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 246, in deserialize_objects
-[2m[36m(pid=69444)[0m     obj = self._deserialize_object(data, metadata, object_ref)
-[2m[36m(pid=69444)[0m   File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 188, in _deserialize_object
-[2m[36m(pid=69444)[0m     return self._deserialize_msgpack_data(data, metadata_fields)
-[2m[36m(pid=69444)[0m   File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 166, in _deserialize_msgpack_data
-[2m[36m(pid=69444)[0m     python_objects = self._deserialize_pickle5_data(pickle5_data)
-[2m[36m(pid=69444)[0m   File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/serialization.py", line 156, in _deserialize_pickle5_data
-[2m[36m(pid=69444)[0m     obj = pickle.loads(in_band)
-[2m[36m(pid=69444)[0m   File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/rllib/agents/trainer_template.py", line 191, in __setstate__
-[2m[36m(pid=69444)[0m     Trainer.__setstate__(self, state)
-[2m[36m(pid=69444)[0m   File "/root/anaconda3/envs/solar_panels_rl/lib/python3.7/site-packages/ray/rllib/agents/trainer.py", line 1320, in __setstate__
-[2m[36m(pid=69444)[0m     self.workers.local_worker().restore(state["worker"])
-[2m[36m(pid=69444)[0m AttributeError: 'PPO' object has no attribute 'workers'
-[2m[36m(pid=69447)[0m   0%|          | 18/1314000 [00:01<25:28:06, 14.33it/s]
-[2m[36m(pid=69443)[0m   0%|          | 44/1314000 [00:01<10:13:52, 35.67it/s]
-[2m[36m(pid=69443)[0m   0%|          | 48/1314000 [00:01<10:11:41, 35.80it/s]
-[2m[36m(pid=69447)[0m   0%|          | 20/1314000 [00:01<25:24:10, 14.37it/s]
-[2m[36m(pid=69443)[0m   0%|          | 52/1314000 [00:01<10:11:57, 35.79it/s]
-[2m[36m(pid=69447)[0m   0%|          | 22/1314000 [00:01<25:25:55, 14.35it/s]
-[2m[36m(pid=69443)[0m   0%|          | 56/1314000 [00:01<10:10:45, 35.86it/s]
-[2m[36m(pid=69447)[0m   0%|          | 25/1314000 [00:01<21:30:39, 16.97it/s]
-[2m[36m(pid=69443)[0m   0%|          | 60/1314000 [00:01<10:11:23, 35.82it/s]
