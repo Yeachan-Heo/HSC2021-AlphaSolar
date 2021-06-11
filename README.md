@@ -2,7 +2,8 @@
 한화사이언스챌린지 2021 OUTLIERs 팀 프로젝트.   
 
 # Contributions
-태양광 발전기의 효율을 강화학습으로 27%가량 개선. (LECTURE.pdf 참조)
+태양광 발전기의 효율을 강화학습으로 27%가량 개선.  
+계획서/발표 자료는 pdf 파일, 시각화는 visualization.ipynb   
 
 # Features
 - PySolar를 사용하여 태양광 발전 시뮬레이션 구현     
