@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 from alphasolar.structures import *
 
 
+# Environment
+
 class AlphaSolarEnv(gym.Env):
     ACTIONS = ["panel_forward_ns", "panel_back_ns", "do_nothing", "panel_forward_ew", "panel_back_ew"]
     ATTRIBUTES = ["angle_AZ", "angle_ALT", "angle_ns", "angle_ew"]
